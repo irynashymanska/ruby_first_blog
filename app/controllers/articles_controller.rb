@@ -26,11 +26,9 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+   
   end
-  def avatar
-    @article = Article.find(params[:id])
-    @article.avatar.attach(io: File.open('app/assets/image/.png'), filename: 'placeholder.png', content_type: 'image/png')
-  end
+
   def update
     @article = Article.find(params[:id])
 
@@ -50,7 +48,7 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :body, :status)
+      params.require(:article).permit(:title, :body, :status, :avatar)
     end
 
 end
